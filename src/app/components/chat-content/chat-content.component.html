@@ -1,0 +1,28 @@
+
+<div class="chat-box-header">
+  <div class="top"><span>Hanging out with <span class="name">{{otherUser}}</span></span></div>
+</div>
+<div class="chat-box-body" [style.background-image]="getSafeUrl('a')" [style.background-repeat]="'no-repeat'"
+     [style.background-size]="'cover'" [style.background-position]="'center center'">
+  <div class="chat">
+      <ng-container *ngFor="let bucket of timeBuckets">
+        <div class="conversation-start">
+          <span>{{bucket.time}}</span>
+        </div>
+        <ng-container *ngFor="let bubble of bucket.bubbleBuckets">
+          <div [ngClass]="isMe(bubble.author)? 'bubble me':'bubble you'">
+            {{bubble.message}}
+          </div>
+        </ng-container>
+      </ng-container>
+  </div>
+
+  <div class="chat-box-footer">
+    <form (ngSubmit)="sendMsg()" [formGroup]="sendMessageForm">
+      <div class="write">
+        <input type="text" id="send-message" formControlName="newMessage"/>
+        <button type="submit" class="write-link send"></button>
+      </div>
+    </form>
+  </div>
+</div>

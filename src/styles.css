@@ -1,0 +1,317 @@
+:root {
+  --white: #fff;
+  --black: #000;
+  --bg: #f8f8f8;
+  --grey: #999;
+  --dark: #1a1a1a;
+  --light: #e6e6e6;
+  --wrapper: 1000px;
+  --blue: #00b0ff;
+}
+
+.body {
+  overflow-y: hidden;
+}
+
+/*this added the index.html file, check there if wanted to remove*/
+.chat-container {
+  display: flex;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.sidebar {
+  flex-basis: 30%;
+  overflow: auto;
+  border-right: 1px solid #ccc;
+}
+
+
+/* top search bar*/
+.sidebar-header {
+  position: relative;
+  width: 100%;
+  height: 96px;
+  padding: 29px;}
+
+
+sidebar-header:after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  display: block;
+  width: 80%;
+  height: 1px;
+  content: "";
+  background-color: var(--light);
+  transform: translate(-50%, 0);
+}
+
+
+input {
+  float: left;
+  width: 75%;
+  height: 42px;
+  padding: 0 15px;
+  border: 1px solid var(--light);
+  background-color: #eceff1;
+  border-radius: 21px;
+}
+
+a.search {
+  display: block;
+  float: left;
+  width: 42px;
+  height: 42px;
+  margin-left: 10px;
+  border: 1px solid var(--light);
+  background-color: var(--blue);
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/name-type.png");
+  background-repeat: no-repeat;
+  background-position: top 12px left 14px;
+  border-radius: 50%;
+}
+
+/*end of the search bar*/
+
+
+/*side bar styles*/
+.person {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.person img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.person-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.person-info .name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.person-info .time {
+  color: #999;
+  font-size: 0.8em;
+}
+
+.person .preview {
+  font-size: 0.8em;
+  color: #999;
+}
+
+.person .active:hover {
+  margin-top: -1px;
+  margin-left: -1px;
+  padding-top: 13px;
+  border: 0;
+  background-color: cornflowerblue;
+  width: calc(100% + 2px);
+  padding-left: calc(10% + 1px);
+}
+
+.person:hover {
+  background-color: rgba(0, 176, 255, 0.37);
+  cursor: pointer;
+}
+
+.person.active:after {
+  display: none;
+}
+
+/* end of side bar people*/
+
+/* start of chatroom*/
+.chat-box {
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-box-body {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.conversation-start {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.conversation-start span {
+  background-color: #fff;
+  color: #a9a9a9;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0 10px;
+}
+
+.bubble {
+  border-radius: 20px;
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 10px;
+  max-width: 75%;
+  padding: 10px 15px;
+  position: relative;
+  text-align: left;
+}
+
+.bubble.you {
+  background-color: #00b0ff;
+  align-self: flex-start;
+}
+
+.bubble.me {
+  background-color: #eceff1;
+  color: black;
+  align-self: flex-end;
+}
+
+.bubble:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.bubble.you:before {
+  border: 10px solid transparent;
+  border-right-color: #1a73e8;
+  left: -20px;
+}
+
+.bubble.me:before {
+  border: 10px solid transparent;
+  border-left-color: #e5e5ea;
+  right: -20px;
+}
+
+/* start of top chat header*/
+.chat-box-header .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  width: 98%;
+  margin-top: 19px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.chat-box-header.top span {
+  font-size: 15px;
+  color: var(--grey);
+}
+.chat-box-header .top span .name {
+  color: var(--dark);
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
+}
+
+/*start of chat footer*/
+.chat-box-footer {
+  position: absolute;
+  bottom: 25px;
+  right: 0;
+  left: 0;
+  width: 85%;
+  margin-right: 150px;
+  margin-left: 150px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+
+.write {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 98%;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+.write input[type="text"] {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.write .write-link {
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0 5px;
+}
+
+.write .send {
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/send.png');
+}
+
+
+/* end of send message*/
+
+
+/* to search bar*/
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #f2f2f2;
+}
+
+.top input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+}
+
+.top .search {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-image: url('https://image.flaticon.com/icons/svg/149/149852.svg');
+  background-size: cover;
+}
+
+/* end of search bar*/
+
+
+.imageDiv{
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
